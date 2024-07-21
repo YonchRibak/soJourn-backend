@@ -52,6 +52,16 @@ class App {
     // Create a request.body containing the given json from the front:
     this.server.use(express.json());
 
+    // Define a simple route for the base URL
+    this.server.get("/", (req, res) => {
+      res.send("Hello, world!");
+    });
+
+    // Define a route for favicon.ico to avoid the error
+    this.server.get("/favicon.ico", (req, res) => {
+      res.status(204).end();
+    });
+
     // Connect any controller route to the server:
     this.server.use("/api", authRouter, userRouter, vacationRouter);
 
