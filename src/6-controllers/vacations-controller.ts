@@ -4,7 +4,6 @@ import { vacationService } from "../5-services/vacation-service";
 import { VacationModel } from "../3-models/vacation-model";
 import { securityMiddleware } from "../4-middleware/security-middleware";
 
-
 // Vacation controller:
 class VacationController {
   // Create a router object for listening to HTTP requests:
@@ -17,6 +16,7 @@ class VacationController {
 
   // Register routes:
   private registerRoutes(): void {
+    this.router.get("/", this.mainRoute);
     this.router.get(
       "/vacations/:sortBy/:filterBy/:searchValue?",
       securityMiddleware.verifyLoggedIn,
@@ -56,6 +56,19 @@ class VacationController {
       securityMiddleware.verifyLoggedIn,
       this.toggleLikeAtVacation
     );
+  }
+
+  //GET http://localhost:4000/api/
+  private async mainRoute(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      await vacationService.mainRoute();
+    } catch (err: any) {
+      next(err);
+    }
   }
 
   // Get http://localhost:4000/api/vacations/:sortBy/:filterBy?page=1&limit=9

@@ -3,7 +3,14 @@ import { ValidationError } from "../3-models/client-errors";
 import { IVacationModel, VacationModel } from "../3-models/vacation-model";
 
 class VacationService {
-    // add vacation:
+  public async mainRoute(): Promise<void> {
+    try {
+      console.log("hello, world");
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+  }
+  // add vacation:
   public async addVacation(
     vacation: IVacationModel,
     image?: Express.Multer.File
@@ -11,10 +18,10 @@ class VacationService {
     try {
       const newVacation = new VacationModel(vacation);
       newVacation.image = image?.originalname;
-      await newVacation.validate(); 
-      return await newVacation.save(); 
+      await newVacation.validate();
+      return await newVacation.save();
     } catch (error) {
-      throw new ValidationError(error.message); 
+      throw new ValidationError(error.message);
     }
   }
 
