@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon --exec ts-node src/app.ts --quiet",
-    "test": "mocha --require ts-node/register tests/**/*.test.ts --exit"
+    "start": "ts-node src/app.ts",
+    "test": "mocha --require ts-node/register tests/**/*.test.ts --exit",
+    "dev": "nodemon --exec ts-node src/app.ts --quiet"
   },
   "keywords": [],
   "author": "",
