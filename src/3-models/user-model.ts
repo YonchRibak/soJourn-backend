@@ -70,4 +70,8 @@ UserSchema.virtual("vacationsLiked", {
   foreignField: "_id",
 });
 
-export const UserModel = model<IUserModel>("UserModel", UserSchema, "users");
+export const UserModel = model<IUserModel>(
+  "UserModel",
+  UserSchema,
+  "vacations.users"
+);
