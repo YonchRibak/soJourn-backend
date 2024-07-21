@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "2d47f936-8e79-4230-8893-a5367b9acbc8",
+		"name": "Vacations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32756186"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"firstName\": \"Jonathan\", \"lastName\": \"Ribak\", \"email\": \"yonch.baalil@gmail.com\", \"password\": \"1234\", \"roleId\": \"1\", \"likedList\": []}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/register",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"yonch.baalil@gmail.com\", \"password\": \"1234\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2N2QyODdmYTJhNTVlOTBjM2IyY2RkMiIsImZpcnN0TmFtZSI6IlRhbCIsImxhc3ROYW1lIjoiVmFsZW50aW5lIiwiZW1haWwiOiJ2YWxlbnRpbmV0YWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiJkMWZlNTgxNTAxM2Q5MmZmNTZkZWMyMmQ0NWNhYzFlNTcxZTBmYTVmZmNiMTFlMWYxM2NkZjA2NTcxZGMzM2IwNDhmMTVkMmE2ZDIwODIyZjVjYWExNzUwNGNmYmVmNDBiYjAxZjg5ZTFiN2M2Y2MwNzA2NjEyOTZhYzcxNmVmNSIsImxpa2VkTGlzdCI6W10sInJvbGVJZCI6MCwiY3JlYXRlZEF0IjoiMjAyNC0wNi0yN1QwODo1MzoxOS4zOThaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0yN1QwODo1MzoxOS4zOThaIn0sImlhdCI6MTcxOTQ4Nzk5NSwiZXhwIjoxNzE5NTA1OTk1fQ.JeLZhy_C8FmS8ugnc1JmT7V4OL4PxzJ3y7pCf3jM77E\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/me",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Regular User",
+			"item": [
+				{
+					"name": "Get All Vacations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/vacations/:sortby/noFilter/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								":sortby",
+								"noFilter",
+								""
+							],
+							"variable": [
+								{
+									"key": "sortby",
+									"value": "likeCount"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Vacations Liked By User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"667cf48690a5443f12105962\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/vacations/liked-by-me",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								"liked-by-me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vacation by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/vacations/:_id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								":_id"
+							],
+							"variable": [
+								{
+									"key": "_id",
+									"value": "6680498a37a237cd34dc4199"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Like At Vacation",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"667cf48690a5443f12105962\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/vacations/:_id/like",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								":_id",
+								"like"
+							],
+							"variable": [
+								{
+									"key": "_id",
+									"value": "667d053073a12807a838cb27"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Add Vacation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "destination",
+									"value": "Addis Ababa",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Explore the vibrant city of Addis Ababa, the capital of Ethiopia and a hub of culture and history. Begin your journey at the National Museum of Ethiopia, home to the famous fossilized remains of 'Lucy.' Wander through the bustling streets of Mercato, one of Africa's largest open-air markets, where you can find everything from spices to traditional crafts. Discover the rich history of Ethiopia at the Holy Trinity Cathedral, an architectural marvel and the final resting place of Emperor Haile Selassie. Stroll along the scenic paths of Mount Entoto for panoramic views of the city and visit the Entoto Maryam Church, steeped in history. Sample local delicacies like injera and doro wat at traditional restaurants, and immerse yourself in the vibrant nightlife of the Bole district, known for its lively bars and clubs. Whether you're fascinated by history, cuisine, or the vibrant culture, Addis Ababa offers an unforgettable vacation experience filled with African charm.",
+									"type": "text"
+								},
+								{
+									"key": "startDate",
+									"value": "2024-08-01T00:00:00.000Z",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-08-10T00:00:00.000Z",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "680",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Pictures/vacations/addis-ababa.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/vacations",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Many Vacations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"destination\": \"Melbourne\",\r\n        \"description\": \"Discover the cultural richness of Melbourne with our exclusive vacation package. Nestled on Australia’s southeastern coast, Melbourne is a vibrant melting pot of art, food, and outdoor adventure. Wander through the leafy streets of Fitzroy, home to eclectic boutiques and street art. Explore the iconic laneways of the Central Business District, where hidden cafes and galleries await around every corner. Visit Federation Square for its cultural events and exhibitions, then stroll along the Yarra River for stunning waterfront views. Indulge your taste buds at Queen Victoria Market, where fresh produce and gourmet delights abound. Discover Melbourne’s maritime history at the Immigration Museum or unwind in the serene Royal Botanic Gardens. Whether you’re cheering at a cricket match in the Melbourne Cricket Ground or exploring the penguins of St Kilda Beach, Melbourne offers an unforgettable blend of urban excitement and natural beauty.\",\r\n        \"startDate\": \"2024-07-05T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-15T00:00:00.000Z\",\r\n        \"price\": 920,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Saint Louis\",\r\n        \"description\": \"Experience the charm of Saint Louis with our exclusive vacation package. Nestled along the banks of the mighty Mississippi River, Saint Louis offers a perfect blend of history, culture, and Midwestern charm. Begin your journey at the iconic Gateway Arch, an architectural marvel offering panoramic views of the city and beyond. Explore the vibrant neighborhoods of Soulard and Central West End, known for their eclectic dining and nightlife scenes. Immerse yourself in the rich history of Forest Park, home to the renowned Saint Louis Art Museum and the St. Louis Zoo. Discover the flavors of Saint Louis with a visit to The Hill, famous for its Italian cuisine, or indulge in a gooey butter cake at a local bakery. Whether you’re cruising along the riverfront or catching a Cardinals game at Busch Stadium, Saint Louis promises a memorable vacation filled with heartland hospitality and iconic landmarks.\",\r\n        \"startDate\": \"2024-06-20T00:00:00.000Z\",\r\n        \"endDate\": \"2024-06-30T00:00:00.000Z\",\r\n        \"price\": 780,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Freiburg\",\r\n        \"description\": \"Immerse yourself in the beauty of Freiburg with our exclusive vacation package. Nestled in the heart of the Black Forest, Freiburg is a picturesque city known for its medieval architecture, vibrant culture, and stunning natural surroundings. Begin your journey at the iconic Freiburg Minster, a Gothic cathedral towering over the historic Old Town. Wander through the charming cobblestone streets lined with cafes, boutiques, and centuries-old buildings. Explore the vibrant market squares, where local artisans and farmers showcase their goods. Discover the tranquil beauty of Schlossberg, a hill offering panoramic views of the city and the surrounding vineyards. Indulge in the region’s culinary delights, from hearty Black Forest ham to freshly baked pretzels and locally produced wines. Whether you’re hiking through the scenic countryside or relaxing in a traditional beer garden, Freiburg promises a serene and unforgettable vacation experience.\",\r\n        \"startDate\": \"2024-07-01T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-10T00:00:00.000Z\",\r\n        \"price\": 800,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Basel\",\r\n        \"description\": \"Discover the cultural richness of Basel with our exclusive vacation package. Located along the banks of the Rhine River, Basel is Switzerland’s cultural capital, renowned for its world-class museums, medieval architecture, and vibrant arts scene. Begin your journey at the Kunstmuseum Basel, home to an impressive collection of Renaissance and modern art. Explore the charming Old Town, where narrow cobblestone streets lead to picturesque squares and historic landmarks. Visit the iconic Basel Minster, a Gothic cathedral offering stunning views from its tower. Indulge in gourmet cuisine at local cafes and Michelin-starred restaurants, then stroll along the Rhine River promenade lined with shops and cafes. Whether you’re exploring the Fondation Beyeler’s art collection or attending the renowned Art Basel fair, Basel promises a cultural adventure enriched by its history, art, and picturesque surroundings.\",\r\n        \"startDate\": \"2024-06-25T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-05T00:00:00.000Z\",\r\n        \"price\": 870,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Krakow\",\r\n        \"description\": \"Explore the historic gem of Poland with our exclusive vacation package. Krakow, Poland’s former royal capital, is a city steeped in history and charm. Begin your journey in the medieval Old Town, a UNESCO World Heritage site adorned with cobblestone streets, Gothic churches, and lively market squares. Discover the royal splendor of Wawel Castle, perched on a hill overlooking the Vistula River. Wander through the atmospheric Jewish Quarter, known for its historic synagogues and vibrant nightlife. Indulge in traditional Polish cuisine, from hearty pierogi to aromatic borscht, paired with local craft beer or vodka. Don’t miss a visit to the poignant Auschwitz-Birkenau Memorial and Museum, a sobering reminder of Krakow’s wartime history. Whether you’re exploring underground salt mines or admiring the artistry of St. Mary’s Basilica’s Gothic altarpiece, Krakow promises a captivating journey through centuries of culture and heritage.\",\r\n        \"startDate\": \"2024-07-10T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-20T00:00:00.000Z\",\r\n        \"price\": 790,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"St. Petersburg\",\r\n        \"description\": \"Indulge in the imperial splendor of St. Petersburg with our exclusive vacation package. Russia’s cultural capital, St. Petersburg, is a city of grand palaces, artistic treasures, and captivating history. Begin your journey at the majestic Winter Palace, home to the State Hermitage Museum’s vast art collection. Explore the iconic Church of the Savior on Spilled Blood, with its colorful onion domes and intricate mosaics. Wander along Nevsky Prospect, the city’s bustling main avenue lined with shops, cafes, and historic buildings. Discover the opulent interiors of Catherine Palace in nearby Pushkin or marvel at the grandeur of Peterhof Palace’s fountains and gardens. Indulge in Russian cuisine, from traditional borscht to delicate blini, paired with Russian vodka or Georgian wine. Whether you’re attending a ballet at the Mariinsky Theatre or cruising along the Neva River, St. Petersburg promises a journey enriched by its artistic legacy and imperial grandeur.\",\r\n        \"startDate\": \"2024-06-10T00:00:00.000Z\",\r\n        \"endDate\": \"2024-06-20T00:00:00.000Z\",\r\n        \"price\": 900,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"The Hague\",\r\n        \"description\": \"Discover the political heart of the Netherlands with our exclusive vacation package. The Hague, also known as Den Haag, combines a rich history with a cosmopolitan vibe. Begin your journey at Binnenhof, the historic complex that houses the Dutch parliament and the office of the Prime Minister. Explore the stunning art collection at Mauritshuis, home to Vermeer’s 'Girl with a Pearl Earring' and other Dutch masterpieces. Wander through the charming streets of the Old Town, lined with cafes, boutiques, and centuries-old architecture. Visit the Peace Palace, an international icon of peace and justice, or relax on the sandy beaches of Scheveningen. Indulge in Dutch delicacies, from freshly caught herring to stroopwafels, paired with local craft beer or Dutch gin. Whether you’re exploring the Royal Palace or cycling through the expansive Haagse Bos forest, The Hague promises a captivating blend of culture, history, and natural beauty.\",\r\n        \"startDate\": \"2024-07-15T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-25T00:00:00.000Z\",\r\n        \"price\": 830,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Napoli\",\r\n        \"description\": \"Experience the culinary delights of Naples with our exclusive vacation package. Naples, Italy’s vibrant southern gem, is a city of contrasts, where ancient history meets modern energy. Begin your journey in the historic center, a UNESCO World Heritage site filled with narrow alleys, Baroque churches, and bustling markets. Explore the archaeological treasures of Pompeii and Herculaneum, frozen in time by the eruption of Mount Vesuvius. Indulge in Neapolitan cuisine, from wood-fired pizza to seafood pasta, paired with locally produced wines like Lacryma Christi. Discover the artistic riches of the National Archaeological Museum or enjoy panoramic views from Castel Sant’Elmo. Whether you’re strolling along the waterfront promenade of Lungomare or exploring the vibrant street art of Quartieri Spagnoli, Naples promises a sensory journey through its rich culture, culinary traditions, and Mediterranean charm.\",\r\n        \"startDate\": \"2024-06-05T00:00:00.000Z\",\r\n        \"endDate\": \"2024-06-15T00:00:00.000Z\",\r\n        \"price\": 810,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Seville\",\r\n        \"description\": \"Immerse yourself in the cultural richness of Seville with our exclusive vacation package. Seville, Spain’s sun-soaked Andalusian capital, is a city of flamenco, festivals, and architectural wonders. Begin your journey at the iconic Plaza de España, a stunning example of Renaissance Revival architecture. Explore the historic Alcázar palace complex, a UNESCO World Heritage site filled with lush gardens and exquisite Mudejar architecture. Wander through the winding streets of the Santa Cruz quarter, lined with orange trees, tapas bars, and artisan workshops. Indulge in Andalusian cuisine, from savory tapas to aromatic paella, paired with regional wines like sherry and Rioja. Don’t miss a visit to the majestic Seville Cathedral and its towering Giralda bell tower, offering panoramic views of the city. Whether you’re attending a flamenco show in Triana or relaxing in the shade of Maria Luisa Park, Seville promises a vibrant and unforgettable vacation experience.\",\r\n        \"startDate\": \"2024-07-20T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-30T00:00:00.000Z\",\r\n        \"price\": 880,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Granada\",\r\n        \"description\": \"Discover the historic charm of Granada with our exclusive vacation package. Granada, nestled in the foothills of the Sierra Nevada mountains, is a city steeped in Moorish history, artistic legacy, and breathtaking landscapes. Begin your journey at the UNESCO-listed Alhambra palace complex, a masterpiece of Islamic architecture and lush gardens. Explore the winding streets of the Albaicín quarter, filled with whitewashed houses, hidden plazas, and panoramic viewpoints. Indulge in Andalusian cuisine, from hearty tapas to flavorful Moroccan-inspired dishes, paired with local wines and sherries. Discover the centuries-old gypsy caves of Sacromonte, where flamenco echoes through the night. Whether you’re marveling at the intricate carvings of the Royal Chapel or hiking through the rugged terrain of Sierra Nevada, Granada promises a captivating blend of history, culture, and natural beauty.\",\r\n        \"startDate\": \"2024-06-30T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-10T00:00:00.000Z\",\r\n        \"price\": 820,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    },\r\n    {\r\n        \"destination\": \"Cork\",\r\n        \"description\": \"Explore the picturesque beauty of Cork with our exclusive vacation package. Cork, Ireland’s second-largest city, is a vibrant blend of historic charm, cultural richness, and scenic landscapes. Begin your journey at the iconic English Market, a food lover’s paradise offering local produce, artisanal goods, and traditional Irish fare. Explore the historic streets of St. Patrick’s Street and Shandon, home to colorful houses, cozy pubs, and historic landmarks like St. Fin Barre’s Cathedral. Indulge in Irish cuisine, from hearty stews to freshly caught seafood, paired with a pint of Guinness or locally brewed craft beer. Discover the artistic treasures of Crawford Art Gallery or take a scenic boat trip along the River Lee. Whether you’re admiring the panoramic views from Cork City Gaol or exploring the rugged coastline of nearby Kinsale, Cork promises a memorable journey through Ireland’s rich culture, history, and natural beauty.\",\r\n        \"startDate\": \"2024-07-08T00:00:00.000Z\",\r\n        \"endDate\": \"2024-07-18T00:00:00.000Z\",\r\n        \"price\": 840,\r\n        \"likesIds\": [],\r\n        \"likesCount\": 0\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/vacations/many",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vacations",
+								"many"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2N2NmNDg2OTBhNTQ0M2YxMjEwNTk2MiIsImZpcnN0TmFtZSI6IkpvbmF0aGFuIiwibGFzdE5hbWUiOiJSaWJhayIsImVtYWlsIjoieW9uY2guYmFhbGlsQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiZjE4Mzc4ZGQxYjRkZGNiMmZmYzFkYzU2YWNmMTc0MDdmYTRjNzMxNjJlNTU2Yzc0NjBlOWQ5YjA2YjY2NzIwNmMxNWExNjg4ZjA4NmJkNjY3YzZkOTc4NmY3NDlhMzMzZWZlNTEyM2I3NDAzZGRkOTY1NDE0NmJjZTEyZjQwZjIiLCJyb2xlSWQiOjEsImxpa2VkTGlzdCI6W10sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjdUMDU6MTE6MzQuNDkwWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjdUMDU6MTE6MzQuNDkwWiJ9LCJpYXQiOjE3MTk3MjYxOTYsImV4cCI6MTcxOTc0NDE5Nn0.07yfatbfHmY5KGuOdLii6hoTfCblVjETCKjt0NTJ4xI",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
