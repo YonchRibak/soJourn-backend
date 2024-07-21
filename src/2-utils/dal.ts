@@ -8,7 +8,11 @@ class DAL {
   public async connect(): Promise<void> {
     try {
       const db = await mongoose.connect(
-        process.env.MONGODB_URI || appConfig.mongodbConnectionString
+        process.env.MONGODB_URI || appConfig.mongodbConnectionString,
+        {
+          serverSelectionTimeoutMS: 30000, // Increase to 30 seconds
+          socketTimeoutMS: 45000, // Socket timeout
+        }
       );
       console.log(
         `We're connected to MongoDB, database: ${db.connections[0].name}`
