@@ -11,6 +11,10 @@ import { securityMiddleware } from "./4-middleware/security-middleware";
 import { authRouter } from "./6-controllers/auth-controller";
 import { userRouter } from "./6-controllers/users-controller";
 import { vacationRouter } from "./6-controllers/vacations-controller";
+import dotenv from "dotenv";
+
+// Load ".env" file into process.env object:
+dotenv.config();
 
 // Main application class:
 class App {
@@ -70,7 +74,7 @@ class App {
     await dal.connect();
 
     // Run server:
-    this.server.listen(appConfig.port, () =>
+    this.server.listen(process.env.PORT || appConfig.port, () =>
       console.log("Listening on http://localhost:" + appConfig.port)
     );
   }
