@@ -24,9 +24,6 @@ class AuthService {
   // Login:
   public async login(credentials: CredentialsModel): Promise<string> {
     credentials.validateLogin();
-    console.log("Attempting login with email:", credentials.email);
-    console.log("JWT_SECRET_KEY:", process.env.JWT_SECRET_KEY);
-    console.log("PASSWORD_SALT:", process.env.PASSWORD_SALT);
     credentials.password = cyber.hashPassword(credentials.password);
 
     const user = await UserModel.findOne({
